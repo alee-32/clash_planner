@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           return ListTile(
             title: Text(acc.name),
-            subtitle: Text("Costruttore libero in: ${timeLeft != null ? _formatDuration(timeLeft) : 'non impostato'}")
+            subtitle: Text("Costruttore libero in: ${timeLeft != null ? _formatDuration(timeLeft) : 'non impostato'}"),
             isThreeLine: true,
             onTap: () => _openAccount(acc),
           );
