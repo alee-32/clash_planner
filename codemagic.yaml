@@ -1,25 +1,15 @@
 workflows:
   ios-workflow:
-    name: Build iOS app with signing
+    name: Build iOS app
     max_build_duration: 60
     environment:
       flutter: stable
       xcode: latest
       cocoapods: default
-      vars:
-        APPLE_ID: alebonetti07@icloud.com  # Metti il tuo Apple ID (email)
     scripts:
       - name: Get dependencies
         script: flutter pub get
-      - name: Build iOS with signing
-        script: flutter build ios --release
-    publishing:
-      scripts:
-        - echo "Build completed!"
+      - name: Build iOS release
+        script: flutter build ios --release --no-codesign
     artifacts:
-      - build/ios/iphoneos/*.ipa
-    code_signing:
-      ios:
-        apple_id: $APPLE_ID
-        # Se hai certificati e provisioning automatici
-        automatic_code_signing: true
+      - build/ios/iphoneos/*.app
